@@ -7,19 +7,33 @@ import {
     Text,
     View,
     TouchableHighlight,
+    DrawerLayoutAndroid,
+    ToolbarAndroid,
 } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar, DefaultTabBar } from 'react-native-scrollable-tab-view';
 import TabBar from './tabbar';
+import NavigationView from './navigationview';
 export default class First extends Component {
     render() {
+
+        var navigationview = (
+            <NavigationView/>
+        );
+
         return (
-            <ScrollableTabView 
-            style={styles.TabHost} 
-            renderTabBar={() => <TabBar/>}
-            tabBarPosition='bottom'>
-                <Text tabLabel = 'home'>Home</Text>
-                <Text tabLabel = 'list'>List</Text>
-            </ScrollableTabView>
+            <DrawerLayoutAndroid
+                drawerWidth={300}
+                drawerPosition={DrawerLayoutAndroid.positions.Left}
+                renderNavigationView={() => <NavigationView/>}>
+                
+                    <ScrollableTabView
+                        style={styles.TabHost}
+                        renderTabBar={() => <TabBar/>}
+                        tabBarPosition='bottom'>
+                        <Text tabLabel='home' key='home'>Home</Text>
+                        <Text tabLabel='list' key='list'>List</Text>
+                    </ScrollableTabView>
+            </DrawerLayoutAndroid>
         );
     }
 }

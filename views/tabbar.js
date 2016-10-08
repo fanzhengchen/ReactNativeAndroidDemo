@@ -40,23 +40,9 @@ const TabBar = React.createClass({
         const textColor = isTabActive ? activeTextColor : inactiveTextColor;
         const fontWeight = isTabActive ? 'bold' : 'normal';
 
-        // return <Button
-        //   style={{flex: 1, flexDirection:'column'}}
-        //   key={name}
-        //   accessible={true}
-        //   accessibilityLabel={name}
-        //   accessibilityTraits='button'
-        //   onPress={() => onPressHandler(page)}
-        // >
-        //   <View style={[styles.tab, this.props.tabStyle, ]}>
-        //     <Text style={[{color: textColor, fontWeight, }, textStyle, ]}>
-        //       {name}
-        //     </Text>
-        //   </View>
-        // </Button>;
-        return <TouchableHighlight style = {{ flex: 1 }} onPress={ () => onPressHandler(page) }>
+        return <TouchableHighlight style = {{ flex: 1 }} onPress={ () => onPressHandler(page) } ref={name}>
             <View style={[styles.tab, this.props.tabStyle,]}>
-                <Text style={[{ color: textColor, fontWeight, }, textStyle,]}>
+                <Text style={[{ color: textColor, fontWeight, }, textStyle,]} ref = {name}>
                     {name}
                 </Text>
             </View>
@@ -68,7 +54,7 @@ const TabBar = React.createClass({
         const numberOfTabs = this.props.tabs.length;
         const tabUnderlineStyle = {
             position: 'absolute',
-            top:0,
+            top: 0,
             width: containerWidth / numberOfTabs,
             height: 4,
             backgroundColor: 'navy',
@@ -81,7 +67,7 @@ const TabBar = React.createClass({
         });
         return (
             <View style={[styles.tabs, { backgroundColor: this.props.backgroundColor, }, this.props.style,]}>
-                {this.props.tabs.map((name, page) => {
+                {this.props.tabs.map((name, page, key) => {
                     const isTabActive = this.props.activeTab === page;
                     const renderTab = this.props.renderTab || this.renderTab;
                     return renderTab(name, page, isTabActive, this.props.goToPage);
