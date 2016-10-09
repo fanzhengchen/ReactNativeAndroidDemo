@@ -28,6 +28,7 @@
         <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
         <activity android:name=".SecondActivity" />
         <activity android:name=".FirstActivity" />
+        <activity android:name="com.reactnativeandroiddemo.StartedFromJsActivity"/>
     </application>
 
 </manifest>

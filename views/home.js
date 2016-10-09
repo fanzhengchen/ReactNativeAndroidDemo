@@ -6,28 +6,31 @@ import {
     StyleSheet,
     Text,
     View,
-    TouchableOpacity,
+    TouchableHighlight,
+    DrawerLayoutAndroid,
+    ToolbarAndroid,
+    Navigator,
 } from 'react-native';
 
-export default class NavigationView extends Component {
+export default class Home extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
-            <View style={styles.title}>
-                <Text style={styles.textContent}>NavigationView</Text>
+            <View style={styles.constainer}>
+                <Text>Home</Text>
             </View>
         );
     }
 }
 
-
 const styles = StyleSheet.create({
-    title: {
+    constainer: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-    },
-
-    textContent: {
-        textAlign: 'center',
     }
 });
