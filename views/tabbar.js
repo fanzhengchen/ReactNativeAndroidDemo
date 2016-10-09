@@ -40,7 +40,7 @@ const TabBar = React.createClass({
         const textColor = isTabActive ? activeTextColor : inactiveTextColor;
         const fontWeight = isTabActive ? 'bold' : 'normal';
 
-        return <TouchableHighlight style = {{ flex: 1 }} onPress={ () => onPressHandler(page) } ref={name}>
+        return <TouchableHighlight style = {{ flex: 1 }} onPress={ () => onPressHandler(page) } ref={name} key={name}>
             <View style={[styles.tab, this.props.tabStyle,]}>
                 <Text style={[{ color: textColor, fontWeight, }, textStyle,]} ref = {name}>
                     {name}

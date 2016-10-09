@@ -17,4 +17,5 @@ public class SecondActivity extends ReactActivity {
     protected String getMainComponentName() {
         return "Second";
     }
+
 }

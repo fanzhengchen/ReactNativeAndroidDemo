@@ -25,6 +25,8 @@ public class MainActivity extends Activity {
 
     @OnClick(R.id.second_activity)
     public void secondActivity() {
-        startActivity(new Intent(this, SecondActivity.class));
+        Intent intent = new Intent(this, SecondActivity.class);
+        intent.putExtra("data", "data from native to JavaScript");
+        startActivity(intent);
     }
 }
