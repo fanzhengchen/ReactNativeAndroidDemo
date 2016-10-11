@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorGray">#FFCCC7C7</color>
-    <color name="toolbarGreen">#FF45C44C</color>
+    <color name="toolbarGreen">#45C44C</color>
 </resources>

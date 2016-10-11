@@ -58,7 +58,7 @@ export default class Second extends Component {
         return (
             <View style = {styles.container}>
                 <TouchableOpacity onPress={this._onPress.bind(this) }>
-                    <Text>Second</Text>
+                    <Text>Second Fuck</Text>
                 </TouchableOpacity>
 
                 <TextInput editable={false} style = {{ width: 200 }}>{this.state.textData}</TextInput>
