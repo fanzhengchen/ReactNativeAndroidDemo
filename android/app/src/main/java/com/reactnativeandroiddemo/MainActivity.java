@@ -29,4 +29,15 @@ public class MainActivity extends Activity {
         intent.putExtra("data", "data from native to JavaScript");
         startActivity(intent);
     }
+
+    @OnClick(R.id.third_activity)
+    public void thirdActivity() {
+        startActivity(new Intent(this, AnimatedActivity.class));
+    }
+
+    @OnClick(R.id.redux_activity)
+    public void reduxActivity() {
+        startActivity(new Intent(this, ReduxActivity.class));
+    }
+
 }

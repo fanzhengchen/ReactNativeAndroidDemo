@@ -28,4 +28,3 @@ const styles = StyleSheet.create({
         margin: 0,
     }
 });
-// AppRegistry.registerComponent('First',() => First )

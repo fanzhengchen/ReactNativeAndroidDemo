@@ -2,4 +2,6 @@
     <string name="app_name">ReactNativeAndroidDemo</string>
     <string name="first_activity">First Activity</string>
     <string name="second_activity">Second Activity</string>
+    <string name="third_activity">Third Activity</string>
+    <string name="redux_activity">Redux Activity</string>
 </resources>
