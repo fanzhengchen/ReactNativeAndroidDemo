@@ -9,31 +9,33 @@ import {
     Text,
     View,
     TouchableHighlight,
+    TouchableOpacity,
     DrawerLayoutAndroid,
     ToolbarAndroid,
     Navigator,
 } from 'react-native';
+import {Provider} from 'react-redux';
+import configureStore from './store';
+import MainContainer from './container/MainContainer';
 
-const styles = StyleSheet.create({
-    constainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-});
-
+const store = configureStore();
 
 class ReduxSample extends React.Component {
 
+    constructor(props) {
+        super(props);
+    }
+
     render() {
+
+        // console.log("store " + JSON.stringify(store));
         return (
-            <View style={styles.constainer}>
-                <Text>
-                    Redux Sample
-                </Text>
-            </View>
+            <MainContainer/>
+
         );
     }
+
 }
+
 
 export default ReduxSample;

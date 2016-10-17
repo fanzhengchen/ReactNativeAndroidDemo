@@ -3,15 +3,12 @@
  */
 
 import * as types from '../constants/actionTypes';
-export default function countChange(state, action) {
+export default function countChange(state = 0, action) {
 
     switch (action.type) {
 
         case types.INCREMENT:
-            return {
-                ...state,
-                cnt:cnt + 1,
-            };
+            return state + 1;
 
         default:
             return state;
