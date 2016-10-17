@@ -25,7 +25,7 @@ class MainContainer extends Component {
 
 function select(state) {
 
-    console.log("select " + state);
+    console.log("select  " + JSON.stringify(state));
     return {
         count: state.count,
     };
