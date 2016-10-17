@@ -3,7 +3,8 @@
  */
 import * as types from '../constants/actionTypes';
 
-export function changeCount() {
+export function increase() {
+    console.log("action increase");
     return {
         type: types.INCREMENT,
     };
