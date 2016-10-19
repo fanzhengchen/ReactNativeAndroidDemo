@@ -9,3 +9,9 @@ export function increase() {
         type: types.INCREMENT,
     };
 };
+
+export function pairChange() {
+    return {
+        type: types.PAIR_CHANGE,
+    };
+}

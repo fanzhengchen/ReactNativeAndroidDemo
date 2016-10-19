@@ -3,9 +3,10 @@
  */
 import {combineReducers} from 'redux';
 import count from "./count";
-
+import pair from "./pair";
 const rootReducer = combineReducers({
-    count
+    count,
+    pair,
 });
 
 export default rootReducer;

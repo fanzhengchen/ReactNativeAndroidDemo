@@ -3,15 +3,16 @@
  */
 
 import * as types from '../constants/actionTypes';
-export default function countChange(count = 0, action) {
 
-    console.log("reducers fuck " + action.type + " state " + count);
+export default function countChange(state = 0, action) {
+
+    console.log("reducers fuck " + action.type + " state ");
     switch (action.type) {
 
         case types.INCREMENT:
-            return count + 1;
+            return state + 1;
 
         default:
-            return count;
+            return state;
     }
 }
