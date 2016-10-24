@@ -25,7 +25,7 @@ export default class MainComponent extends Component {
     }
 
     componentWillMount() {
-        console.log("component props " + JSON.stringify(this.props));
+        // console.log("component props " + JSON.stringify(this.props));
     }
 
     render() {

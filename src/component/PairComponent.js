@@ -38,8 +38,6 @@ export default class PairComponent extends Component {
                 <TouchableOpacity onPress={this.onPress.bind(this)}>
                     <Text>change Pair</Text>
                 </TouchableOpacity>
-
-
             </View>
         )
     }

@@ -4,8 +4,6 @@ import React, {
 import {
     StyleSheet,
     Text,
-    View,
-    TouchableHighlight,
     DrawerLayoutAndroid,
     ToolbarAndroid,
     Navigator,
@@ -14,22 +12,32 @@ import ScrollableTabView, {ScrollableTabBar, DefaultTabBar} from 'react-native-s
 import TabBar from './tabbar';
 import NavigationView from './navigationview';
 import Home from './home';
-import Sub from './sub';
-
+import ListCarContainer from "../src/container/ListCarContainer";
+import configureStore from '../src/store';
+import {Provider} from 'react-redux';
 export default class App extends Component {
+
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            store: configureStore(),
+        };
+    }
+
     render() {
         return (
-            <DrawerLayoutAndroid
-                drawerWidth={300}
-                drawerPosition={DrawerLayoutAndroid.positions.Left}
-                renderNavigationView={() => <NavigationView/>}>
-                <Navigator
-                    initialRoute={{title: 'Home', id: 'Home', index: 0}}
-                    renderScene={this._renderScene.bind(this)}
-                    configureScene={this._configureScene.bind(this)}
-                >
-                </Navigator>
-            </DrawerLayoutAndroid>
+            <Provider store={this.state.store}>
+                <DrawerLayoutAndroid
+                    drawerWidth={300}
+                    drawerPosition={DrawerLayoutAndroid.positions.Left}
+                    renderNavigationView={() => <NavigationView/>}>
+                    <Navigator
+                        initialRoute={{title: 'Home', id: 'Home', index: 0}}
+                        renderScene={this._renderScene.bind(this)}
+                        configureScene={this._configureScene.bind(this)}/>
+                </DrawerLayoutAndroid>
+            </Provider>
         );
     }
 
@@ -39,6 +47,8 @@ export default class App extends Component {
 
     _renderScene(route, navigator) {
         if (route.id === 'Home') {
+
+            var data = ['row1', 'row2'];
             return (
                 <ScrollableTabView
                     style={styles.TabHost}
@@ -46,14 +56,11 @@ export default class App extends Component {
                     tabBarPosition='bottom'>
 
                     <Home tabLabel='home' key='home' navigator={navigator}/>
-                    <Text tabLabel='list' key='list' navigator={navigator}>List</Text>
+                    <ListCarContainer tabLabel='list' key='list' navigator={navigator}>List</ListCarContainer>
                 </ScrollableTabView>
             );
-        } else if (route.id == 'SubComponent') {
-            return (
-                // <Sub/>
-                <Text>SubComponet</Text>
-            );
+        } else {
+            return <route.component navigator={navigator} {...route.props}/>;
         }
     }
 }

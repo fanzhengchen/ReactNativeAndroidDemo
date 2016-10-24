@@ -18,6 +18,7 @@ import {
     LayoutAnimation,
     Animated,
     Easing,
+    UIManager,
 } from 'react-native';
 
 export default class Animate extends Component {
@@ -27,6 +28,9 @@ export default class Animate extends Component {
         this.state = {
             fadeAnim: new Animated.Value(0),
             currentAlpha: 0,
+            width: 100,
+            height: 50,
+            toggle: 0,
         };
     }
 
@@ -65,11 +69,25 @@ export default class Animate extends Component {
                     <Text>Start Animation</Text>
                 </TouchableOpacity>
 
-                <View>
+                <TouchableOpacity style={{
+                    width: this.state.width,
+                    height: this.state.height,
+                    backgroundColor: '#FF00FF',
+                    alignItems: 'center',
+                }} onPress={() => this._onPressView}>
                     <Text>page View</Text>
-                </View>
+                </TouchableOpacity>
             </View>
         );
+    }
+
+    _onPressView() {
+        this.state.toggle ^= 1;
+        var toggle = this.state.toggle;
+        this.setState({
+            width: 5,
+            height: 100 - toggle * 50,
+        });
     }
 
     _onPress() {

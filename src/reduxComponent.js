@@ -34,10 +34,15 @@ class ReduxSample extends React.Component {
         // console.log("store " + JSON.stringify(store));
         return (
             <Provider store={this.state.store}>
-                <MainContainer/>
+                <Navigator renderScene={this.renderScene.bind(this)}
+                           initialRoute={{component: MainContainer}}/>
             </Provider>
 
         );
+    }
+
+    renderScene(route, navigator) {
+        return <route.component navigator={navigator} {...route.props}/>;
     }
 
 }
