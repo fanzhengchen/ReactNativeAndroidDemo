@@ -16,6 +16,7 @@ import {
 } from 'react-native';
 
 import {increase} from '../actions/count';
+import * as types from '../constants/actionTypes';
 
 export default class MainComponent extends Component {
 
@@ -49,6 +50,10 @@ export default class MainComponent extends Component {
     increase() {
         const {dispatch} = this.props;
         dispatch(increase());
+        dispatch({
+            type: types.CHART_CAR_CHECK,
+            index: -1,
+        });
     }
 }
 

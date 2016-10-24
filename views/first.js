@@ -13,10 +13,18 @@ import {
     StatusBar,
 } from 'react-native';
 import App from './app';
+import {Provider} from 'react-redux';
+import configureStore from '../src/store';
+import charCarReducer from '../src/reducers/CharCarReducer';
 export default class First extends Component {
+
+
     render() {
+        let store = configureStore(charCarReducer);
         return (
-            <App/>
+            <Provider store={store}>
+                <App/>
+            </Provider>
         );
     }
 }

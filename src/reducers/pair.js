@@ -7,7 +7,6 @@ export default function pairChange(state = {
     second: 'second',
 }, action) {
 
-    console.log("reducers fuck " + action.type + " state ");
     switch (action.type) {
 
         case types.PAIR_CHANGE:

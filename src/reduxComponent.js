@@ -17,7 +17,7 @@ import {
 import {Provider} from 'react-redux';
 import configureStore from './store';
 import MainContainer from './container/MainContainer';
-
+import rootReducer from './reducers/index';
 // const store = configureStore();
 
 class ReduxSample extends React.Component {
@@ -25,7 +25,7 @@ class ReduxSample extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            store: configureStore(),
+            store: configureStore(rootReducer),
         };
     }
 

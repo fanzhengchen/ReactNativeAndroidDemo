@@ -13,31 +13,25 @@ import TabBar from './tabbar';
 import NavigationView from './navigationview';
 import Home from './home';
 import ListCarContainer from "../src/container/ListCarContainer";
-import configureStore from '../src/store';
-import {Provider} from 'react-redux';
+
 export default class App extends Component {
 
 
     constructor(props) {
         super(props);
-        this.state = {
-            store: configureStore(),
-        };
     }
 
     render() {
         return (
-            <Provider store={this.state.store}>
-                <DrawerLayoutAndroid
-                    drawerWidth={300}
-                    drawerPosition={DrawerLayoutAndroid.positions.Left}
-                    renderNavigationView={() => <NavigationView/>}>
-                    <Navigator
-                        initialRoute={{title: 'Home', id: 'Home', index: 0}}
-                        renderScene={this._renderScene.bind(this)}
-                        configureScene={this._configureScene.bind(this)}/>
-                </DrawerLayoutAndroid>
-            </Provider>
+            <DrawerLayoutAndroid
+                drawerWidth={300}
+                drawerPosition={DrawerLayoutAndroid.positions.Left}
+                renderNavigationView={() => <NavigationView/>}>
+                <Navigator
+                    initialRoute={{title: 'Home', id: 'Home', index: 0}}
+                    renderScene={this._renderScene.bind(this)}
+                    configureScene={this._configureScene.bind(this)}/>
+            </DrawerLayoutAndroid>
         );
     }
 
@@ -48,7 +42,6 @@ export default class App extends Component {
     _renderScene(route, navigator) {
         if (route.id === 'Home') {
 
-            var data = ['row1', 'row2'];
             return (
                 <ScrollableTabView
                     style={styles.TabHost}

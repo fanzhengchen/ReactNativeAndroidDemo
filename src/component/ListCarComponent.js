@@ -3,21 +3,25 @@
  */
 import React, {Component} from "react";
 import {StyleSheet, View, DrawerLayoutAndroid, ToolbarAndroid, TouchableOpacity, Text, ListView} from "react-native";
-
+import CheckBox from 'react-native-checkbox';
+import {connect} from "react-redux";
+import * as types from '../constants/actionTypes';
 export default class ListCarComponent extends Component {
     constructor(props) {
         super(props);
-        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        this.state = {
-            dataSource: ds.cloneWithRows([1, 1]),
-        };
+        // const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+        // this.state = {
+        //     dataSource: ds.cloneWithRows(this.props.listData),
+        // };
     }
 
     render() {
+
+
         return (
             <ListView
-                dataSource={this.state.dataSource}
-                renderRow={(rowData, sectionID, rowID) => this._renderRow(rowData)}
+                dataSource={this.props.dataSource}
+                renderRow={(rowData, sectionID, rowID) => this._renderRow(rowData, sectionID, rowID)}
                 renderSeparator={(sectionID, rowID, adjacentRowHighlighted) => this._renderSeparator()}
             />
         );
@@ -28,15 +32,25 @@ export default class ListCarComponent extends Component {
     }
 
     _renderRow(rowData, sectionID, rowID) {
+
+        console.log("render row rowID " + rowID);
+
         return (
             <View style={styles.container}>
+                <CheckBox
+                    label='Label'
+                    checked={rowData.flag}
+                    onChange={(checked) => {
+                        this._onChange(checked, rowID);
+                    }}
+                />
                 <TouchableOpacity>
                     <View style={{borderRadius: 5, borderWidth: 2, borderColor: '#FF0000', margin: 10}}>
                         <Text style={styles.OperatorStyle}>-</Text>
                     </View>
                 </TouchableOpacity>
 
-                <Text style={styles.OperatorStyle}>{rowData}</Text>
+                <Text style={styles.OperatorStyle}>{rowData.text}</Text>
 
                 <TouchableOpacity>
                     <View style={{borderRadius: 5, borderWidth: 2, borderColor: '#FF0000', margin: 10}}>
@@ -45,6 +59,16 @@ export default class ListCarComponent extends Component {
                 </TouchableOpacity>
             </View>
         );
+    }
+
+    _onChange(checked, rowID) {
+        const {dispatch} = {...this.props};
+        var index = parseInt(rowID);
+        console.log("on change rowId %d", index);
+        dispatch({
+            type: types.CHART_CAR_CHECK,
+            index: index,
+        });
     }
 }
 
