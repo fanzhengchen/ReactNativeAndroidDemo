@@ -9,17 +9,11 @@ class ListCarContainer extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            listData: [{flag: 0, text: 'first'}],
-        }
     }
 
     render() {
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        // this.state = {
-        //     dataSource: ds.cloneWithRows(this.props.listData),
-        // };
-        var dataSource = ds.cloneWithRows([{flag: 0, text: 'text'}, {flag: 1, text: 'second'}]);
+        var dataSource = ds.cloneWithRows(this.props.listData.toArray());
         return (
             <ListCarComponent {...this.props} dataSource={dataSource}/>
         );

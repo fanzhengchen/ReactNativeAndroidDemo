@@ -2,25 +2,25 @@
  * Created by fanzhengchen on 10/24/16.
  */
 import * as types from '../constants/actionTypes';
-var Immutable = require('Immutable');
+var Immutable = require('immutable');
 
 export default function listData(state =
                                      Immutable.List([
                                          Immutable.Map({
                                              flag: 0,
+                                             text: 'first',
                                          }),
-                                         Immutable.Map(
-                                             {
-                                                 flag: 1,
-                                             }),
+                                         Immutable.Map({
+                                             flag: 1,
+                                             text: 'second',
+                                         }),
                                      ])
     , action) {
-    console.log("getList " + types.CHART_CAR_CHECK + " " + action.type + " " + JSON.stringify(state));
     switch (action.type) {
         case types.CHART_CAR_CHECK: {
-            console.log("action index %d", action.index);
-            var {flag} = state[0];
-            return {flag: flag + flag};
+            var ret = state.updateIn([action.index, 'flag'], (x) => x ^= 1);
+            console.log(ret);
+            return ret;
         }
         default:
             return state;
