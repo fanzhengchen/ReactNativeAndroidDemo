@@ -19,7 +19,10 @@
 ## 4. React Native 结合Redux以及Immutable进行有效的数据流管理，
 #### (1). Redux结构 actions、reducer、store、dispatch，其中核心是reducer以及通过connect函数将更新后的state树更新到props，数据更新需要用到可持久化数据结构，需要学习Immutable框架。Reducers涉及到具体类型数据的映射，需要实现设计。
 >[Redux 简介](http://redux.js.org/) 
->[Redux　结构]
+>
+>![Redux　结构](https://raw.githubusercontent.com/fanzhengchen/ReactNativeAndroidDemo/master/redux-data-flow.jpg)
+>
+>
 
 #### (2). Immutable 核心就是 Immutable.List 和 Immutable.Map，一个对应数组，一个对应JavaScript Object，学会赋值和更新函数 update, updateIn, set, setIn
 
