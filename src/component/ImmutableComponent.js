@@ -26,6 +26,8 @@ class ImmutableComponent extends Component {
                     ImmutableContainer fuck
                 </Text>
 
+
+                <Text>{this.props.counter}</Text>
                 <TouchableOpacity onPress={this._onPress.bind(this)}>
                     <Text>Press</Text>
                 </TouchableOpacity>
