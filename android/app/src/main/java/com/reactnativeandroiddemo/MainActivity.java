@@ -40,4 +40,8 @@ public class MainActivity extends Activity {
         startActivity(new Intent(this, ReduxActivity.class));
     }
 
+    @OnClick(R.id.immutable_activity)
+    public void immutableActivity() {
+        startActivity(new Intent(this, ImmutableActivity.class));
+    }
 }

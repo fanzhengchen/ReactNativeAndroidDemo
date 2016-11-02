@@ -10,35 +10,43 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_margin="10dp"
-        android:gravity="center"
         android:background="@color/colorGray"
+        android:gravity="center"
         android:text="@string/first_activity" />
 
     <TextView
-        android:background="@color/colorGray"
         android:id="@+id/second_activity"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_margin="10dp"
+        android:background="@color/colorGray"
         android:gravity="center"
         android:text="@string/second_activity" />
 
     <TextView
-        android:background="@color/colorGray"
         android:id="@+id/third_activity"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_margin="10dp"
+        android:background="@color/colorGray"
         android:gravity="center"
         android:text="@string/third_activity" />
 
     <TextView
-        android:background="@color/colorGray"
         android:id="@+id/redux_activity"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_margin="10dp"
+        android:background="@color/colorGray"
         android:gravity="center"
         android:text="@string/redux_activity" />
 
+    <TextView
+        android:id="@+id/immutable_activity"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:background="@color/colorGray"
+        android:gravity="center"
+        android:text="@string/immutable_activity" />
 </LinearLayout>

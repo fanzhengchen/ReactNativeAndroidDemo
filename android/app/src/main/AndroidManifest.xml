@@ -30,6 +30,7 @@
         <activity android:name=".FirstActivity" />
         <activity android:name=".AnimatedActivity" />
         <activity android:name=".ReduxActivity" />
+        <activity android:name=".ImmutableActivity" />
         <activity android:name="com.reactnativeandroiddemo.StartedFromJsActivity" />
     </application>
 

@@ -13,6 +13,7 @@ import First from './views/first';
 import Second from './views/second';
 import Animate from './views/animate';
 import ReduxSample from './src/reduxComponent';
+import ImmutableComponent from './src/component/ImmutableContainer';
 AppRegistry.registerComponent('First', () => {
     return First;
 });
@@ -25,4 +26,8 @@ AppRegistry.registerComponent('Animate', () => {
 
 AppRegistry.registerComponent('ReduxComponent', () => {
     return ReduxSample;
+});
+
+AppRegistry.registerComponent('ImmutableContainer', () => {
+    return ImmutableComponent;
 });
