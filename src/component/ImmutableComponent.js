@@ -18,7 +18,8 @@ import {
 
 import RxActions from '../actions/RxActions';
 import {connect} from '../state/RxState';
-import {SwipeListView, SwipeRow} from 'react-native-swipe-list-view';
+
+import ListComponent from './ListComponent';
 class ImmutableComponent extends Component {
 
     constructor(props) {
@@ -27,11 +28,11 @@ class ImmutableComponent extends Component {
 
         this.state = {
             basic: true,
-            listViewData: Array(20).fill('').map((_, i)=>`item #${i}`)
         };
     }
 
     render() {
+        var dataSource = this.ds.cloneWithRows(this.props.listData.toArray());
         return (
             <View style={styles.container}>
                 <Text>
@@ -43,39 +44,8 @@ class ImmutableComponent extends Component {
                 <TouchableOpacity onPress={this._onPress.bind(this)}>
                     <Text>Press</Text>
                 </TouchableOpacity>
-                {
 
-                    this.state.basic &&
-                    <SwipeListView
-                        dataSource={this.ds.cloneWithRows(this.state.listViewData)}
-                        renderRow={ data => (
-                            <TouchableHighlight
-                                onPress={ _ => console.log('You touched me') }
-                                style={styles.rowFront}
-                                underlayColor={'#AAA'}
-                            >
-                                <View>
-                                    <Text>I'm {data} in a SwipeListView</Text>
-                                </View>
-                            </TouchableHighlight>
-                        )}
-                        renderHiddenRow={ (data, secId, rowId, rowMap) => (
-                            <View style={styles.rowBack}>
-                                <Text>Left</Text>
-                                <View style={[styles.backRightBtn, styles.backRightBtnLeft]}>
-                                    <Text style={styles.backTextWhite}>Right</Text>
-                                </View>
-                                <TouchableOpacity style={[styles.backRightBtn, styles.backRightBtnRight]}
-                                                  onPress={ _ => this.deleteRow(secId, rowId, rowMap) }>
-                                    <Text style={styles.backTextWhite}>Delete</Text>
-                                </TouchableOpacity>
-                            </View>
-                        )}
-                        leftOpenValue={75}
-                        rightOpenValue={-150}
-
-                    />
-                }
+                <ListComponent dataSource={dataSource}/>
 
             </View>
         );
@@ -85,18 +55,21 @@ class ImmutableComponent extends Component {
         RxActions.increment$.next(10);
     }
 
-    deleteRow(secId, rowId, rowMap) {
-        rowMap[`${secId}${rowId}`].closeRow();
-        const newData = [...this.state.listViewData];
-        newData.splice(rowId, 1);
-        this.setState({listViewData: newData});
-    }
+
 }
 export default connect(state => {
+
+    console.log("state =============");
+    console.log(state);
+    console.log("to array --------------------");
+    console.log(state.listData);
     return ({
         counter: state.counter,
+        listData: state.listData,
     });
 })(ImmutableComponent);
+
+
 const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',

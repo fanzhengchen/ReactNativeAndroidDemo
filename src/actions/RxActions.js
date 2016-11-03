@@ -3,4 +3,4 @@
  */
 import {createActions} from "../state/RxState";
 
-export default createActions(["increment$", "append$", "iterate$"]);
+export default createActions(["increment$", "removeIndex$",]);
