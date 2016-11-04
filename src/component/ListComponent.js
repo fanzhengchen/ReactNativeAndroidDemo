@@ -22,7 +22,7 @@ export default class ListComponent extends Component {
 
     constructor(props) {
         super(props);
-        this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => (Immutable.is(r1, r2))});
+        this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => (!Immutable.is(r1, r2))});
 
         this.state = {
             basic: true,
@@ -47,6 +47,7 @@ export default class ListComponent extends Component {
                 {
                     this.state.basic &&
                     <SwipeListView
+                        ref="listView"
                         dataSource={this.props.dataSource}
                         renderRow={ (rowData) => (
                             <TouchableHighlight
@@ -66,7 +67,11 @@ export default class ListComponent extends Component {
                                     <Text style={styles.backTextWhite}>Right</Text>
                                 </View>
                                 <TouchableOpacity style={[styles.backRightBtn, styles.backRightBtnRight]}
-                                                  onPress={ _ => this.deleteRow(secId, rowId, rowMap) }>
+                                                  onPress={ _ => {
+                                                      this.deleteRow(secId, rowId, rowMap);
+                                                      this.refs.listView.safeCloseOpenRow();
+
+                                                  }}>
                                     <Text style={styles.backTextWhite}>Delete</Text>
                                 </TouchableOpacity>
                             </View>
